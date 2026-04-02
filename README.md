@@ -21,15 +21,14 @@
 
 <br/>
 
-### الكهف &nbsp;·&nbsp; The Cave
+### 🦇 &nbsp;The Cave
 
 The cave is where things get built, no announcements, no build-in-public theater. Just focus, craft, and shipping when it's ready.
 
 I'm a product builder in the MENA tech ecosystem working at Resal. I think in systems, obsess over simplicity, and believe the best products feel inevitable. Everything unnecessary is a small tax on the user's attention.
 
 ```
-أفضل المنتجات ما تحتاج شرح — تحس إنها كانت موجودة من قبل.
-The best products don't need explanation — they feel like they always existed.
+The best products don't need explanation, they feel like they always existed.
 ```
 
 <br/>
@@ -92,9 +91,9 @@ Read-only MCP server for Metabase — 14 tools for querying databases via the Mo
 | | |
 |:---:|:---:|
 | **البناء بصمت** | **هوس البساطة** |
-| Build in silence. Ship when it's ready. | Subtract until only the essential remains. |
+| Build in silence. Ship when it's ready | Subtract until only the essential remains |
 | **الشغل الفوضوي** | **المخرجات تتكلم** |
-| Real building is messy, not a framework. | Don't announce what you'll build. Build it. |
+| Real building is messy, not a framework | Don't announce what you'll build. Build it |
 
 </div>
 
