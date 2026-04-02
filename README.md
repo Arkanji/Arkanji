@@ -109,10 +109,6 @@ Read-only MCP server for Metabase — 14 tools for querying databases via the Mo
 
 <br/>
 
-```
-المخرجات تتكلم.
-```
-
 <sub>Outputs speak.</sub>
 
 <br/><br/>
