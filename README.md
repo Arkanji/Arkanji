@@ -25,7 +25,7 @@
 
 The cave is where things get built, no announcements, no build-in-public theater. Just focus, craft, and shipping when it's ready.
 
-I'm a product builder in the MENA tech ecosystem working at Resal. I think in systems, obsess over simplicity, and believe the best products feel inevitable. Everything unnecessary is a small tax on the user's attention.
+I'm a product builder in the MENA tech ecosystem building at Resal. I think in systems, obsess over simplicity, and believe the best products feel inevitable. Everything unnecessary is a small tax on the user's attention.
 
 ```
 The best products don't need explanation, they feel like they always existed.
