@@ -23,9 +23,9 @@
 
 ### الكهف &nbsp;·&nbsp; The Cave
 
-The cave is where things get built — no announcements, no build-in-public theater. Just focus, craft, and shipping when it's ready.
+The cave is where things get built, no announcements, no build-in-public theater. Just focus, craft, and shipping when it's ready.
 
-I'm a product builder in the MENA tech ecosystem. I think in systems, obsess over simplicity, and believe the best products feel inevitable. Everything unnecessary is a small tax on the user's attention.
+I'm a product builder in the MENA tech ecosystem working at Resal. I think in systems, obsess over simplicity, and believe the best products feel inevitable. Everything unnecessary is a small tax on the user's attention.
 
 ```
 أفضل المنتجات ما تحتاج شرح — تحس إنها كانت موجودة من قبل.
@@ -67,18 +67,11 @@ The best products don't need explanation — they feel like they always existed.
 
 <table>
 <tr>
-<td width="50%" valign="top">
+<td width="100%" valign="top">
 
 **[metabase-mcp-server](https://github.com/Arkanji/metabase-mcp-server)**
 Read-only MCP server for Metabase — 14 tools for querying databases via the Model Context Protocol.
 `TypeScript` `MCP` `Metabase`
-
-</td>
-<td width="50%" valign="top">
-
-**[arkanji-blog](https://github.com/Arkanji/arkanji-blog)**
-The cave itself — where ideas emerge as short, punchy essays on product craft, building philosophy, and contrarian takes.
-`Blog` `Arabic`
 
 </td>
 </tr>
