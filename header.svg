@@ -1,0 +1,79 @@
+<svg width="900" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Cave gradient - deep darkness with subtle warm light -->
+    <linearGradient id="caveBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="40%" style="stop-color:#0d0d0d"/>
+      <stop offset="70%" style="stop-color:#111111"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+
+    <!-- Cave Gold glow -->
+    <radialGradient id="goldGlow" cx="50%" cy="60%" r="40%">
+      <stop offset="0%" style="stop-color:#c8b88a;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#c8b88a;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Subtle cave texture pattern -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.04"/>
+      </feComponentTransfer>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Stalactite shapes -->
+    <clipPath id="caveEdge">
+      <rect x="0" y="0" width="900" height="300"/>
+    </clipPath>
+  </defs>
+
+  <!-- Base -->
+  <rect width="900" height="300" fill="url(#caveBg)"/>
+
+  <!-- Noise texture overlay -->
+  <rect width="900" height="300" filter="url(#noise)" opacity="0.5"/>
+
+  <!-- Gold ambient glow -->
+  <rect width="900" height="300" fill="url(#goldGlow)"/>
+
+  <!-- Cave ceiling stalactites - top edge -->
+  <path d="M0,0 L0,8 Q30,12 60,6 Q80,18 110,8 Q130,22 160,10 Q180,16 200,5 Q230,20 260,12 Q280,8 310,15 Q340,25 370,10 Q390,18 420,8 Q450,22 480,14 Q500,10 530,18 Q560,24 590,12 Q610,8 640,16 Q670,20 700,10 Q720,14 750,8 Q780,18 810,12 Q840,6 870,14 Q890,10 900,8 L900,0 Z" fill="#050505" opacity="0.8"/>
+
+  <path d="M0,0 L0,5 Q40,15 80,4 Q120,12 160,6 Q200,18 240,8 Q280,14 320,10 Q360,20 400,6 Q440,16 480,10 Q520,22 560,8 Q600,14 640,12 Q680,18 720,6 Q760,12 800,8 Q840,16 880,6 Q900,10 900,0 Z" fill="#080808" opacity="0.6"/>
+
+  <!-- Subtle horizontal lines like cave strata -->
+  <line x1="100" y1="85" x2="380" y2="85" stroke="#c8b88a" stroke-width="0.3" opacity="0.15"/>
+  <line x1="520" y1="215" x2="800" y2="215" stroke="#c8b88a" stroke-width="0.3" opacity="0.15"/>
+
+  <!-- The name: arkanji -->
+  <text x="450" y="130" font-family="'IBM Plex Sans', -apple-system, sans-serif" font-size="56" font-weight="300" fill="#c8b88a" text-anchor="middle" letter-spacing="8" opacity="0.95">arkanji</text>
+
+  <!-- Tagline -->
+  <text x="450" y="170" font-family="'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif" font-size="16" fill="#c8b88a" text-anchor="middle" letter-spacing="2" opacity="0.5">أبني بصمت، أفكّر بصوت عالي</text>
+
+  <!-- Subtle separator line -->
+  <line x1="370" y1="188" x2="530" y2="188" stroke="#c8b88a" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Subtitle -->
+  <text x="450" y="215" font-family="'IBM Plex Sans', -apple-system, sans-serif" font-size="13" fill="#888888" text-anchor="middle" letter-spacing="4" opacity="0.6">PRODUCT BUILDER · THE CAVE</text>
+
+  <!-- Cave floor stalagmites - bottom edge -->
+  <path d="M0,300 L0,290 Q40,280 80,292 Q120,284 160,290 Q200,278 240,288 Q280,282 320,292 Q360,276 400,286 Q440,280 480,290 Q520,278 560,288 Q600,282 640,292 Q680,276 720,286 Q760,282 800,290 Q840,284 880,292 Q900,288 900,300 Z" fill="#050505" opacity="0.6"/>
+
+  <!-- Corner accents -->
+  <line x1="30" y1="30" x2="30" y2="60" stroke="#c8b88a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="30" y1="30" x2="60" y2="30" stroke="#c8b88a" stroke-width="0.5" opacity="0.3"/>
+
+  <line x1="870" y1="30" x2="870" y2="60" stroke="#c8b88a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="870" y1="30" x2="840" y2="30" stroke="#c8b88a" stroke-width="0.5" opacity="0.3"/>
+
+  <line x1="30" y1="270" x2="30" y2="240" stroke="#c8b88a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="30" y1="270" x2="60" y2="270" stroke="#c8b88a" stroke-width="0.5" opacity="0.3"/>
+
+  <line x1="870" y1="270" x2="870" y2="240" stroke="#c8b88a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="870" y1="270" x2="840" y2="270" stroke="#c8b88a" stroke-width="0.5" opacity="0.3"/>
+</svg>
