@@ -9,8 +9,7 @@
 
 <br/><br/>
 
-[![Blog](https://img.shields.io/badge/arkanji.com-the%20blog-0a0a0a?style=flat-square&labelColor=0a0a0a&color=1a1a1a)](https://arkanji.com)&nbsp;&nbsp;
-[![X](https://img.shields.io/badge/@arkanji-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/ArkanjiBlog)
+[![X](https://img.shields.io/badge/@WaleedArkanji-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/WaleedArkanji)
 
 </div>
 
