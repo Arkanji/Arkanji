@@ -1,26 +1,19 @@
-"""Builds every SVG on the profile, and the essays block of README.md.
+"""Builds every SVG on the profile.
 
-    python scripts/build.py              # fetches https://arkanji.com/index.xml
-    RSS_FILE=index.xml python scripts/build.py
+    python scripts/build.py
 
-Deterministic: the same feed gives the same files, so the daily workflow only
-commits when an essay actually changed.
+Deterministic: the same fonts give the same files, byte for byte.
 """
-import datetime as dt
-import email.utils
 import html
 import json
 import os
 import random
-import re
-import urllib.request
 
 from svgtext import face
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 ASSETS = os.path.join(ROOT, "assets")
 ICONS = json.load(open(os.path.join(os.path.dirname(__file__), "icons.json")))
-RSS_URL = "https://arkanji.com/index.xml"
 
 # The cave palette, from arkanji.com's dark theme (oklch tokens → sRGB).
 PAPER, SUNK = "#0d0c0a", "#151411"
@@ -36,9 +29,6 @@ SANS_R = lambda: face("ThmanyahSans-Regular")
 SANS_M = lambda: face("ThmanyahSans-Medium")
 MONO = lambda: face("IBMPlexMono-400-latin")
 
-AR_MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو",
-             "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"]
-AR_DIGITS = str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩")
 
 # السبكة: the lattice tile arkanji.com uses as its one ornament.
 SEBKA = ('<pattern id="sebka" width="40" height="40" patternUnits="userSpaceOnUse">'
@@ -226,39 +216,36 @@ def iwork():
                   f'<circle cx="{x + 22}" cy="326" r="6" fill="{color}"/>'
                   + T(SANS_M(), name, x + 38, 333, 19, "start", INK))
         x += w + 12
-    stats = ""
-    for i, (value, en) in enumerate([("76/76", "tests green"), ("0", "repair prompts"),
-                                     ("1:1", "Arabic byte-exact")]):
-        y = 176 + i * 84
-        stats += (T(DISP_B(), value, 1144, y, 46, "end", GOLD)
-                  + T(SANS_R(), en, 1144, y + 25, 18, "end", FAINT, .3))
-        if i:
-            stats += f'<rect x="880" y="{y - 49}" width="264" height="1" fill="{RULE}"/>'
     body = (
         label(56, W - 56, 76, "أحدث إطلاق", "01 — NOW SHIPPING", dot=True)
         + f'<rect x="56" y="104" width="{W - 112}" height="1" fill="{RULE}"/>'
         + T(DISP_B(), "iWork Studio", 52, 214, 88, "start", INK)
         + T(SANS_R(), "Give your AI agent the keys to Apple iWork.", 56, 264, 25, "start", SOFT)
-        + chips + stats
+        + chips
         + f'<rect x="56" y="388" width="{W - 112}" height="1" fill="{RULE}"/>'
         + T(MONO(), "PYTHON · MACOS · MIT · DROP-IN AGENT SKILL", 56, 424, 14, "start", FAINT, 2)
         + T(MONO(), "github.com/Arkanji/iwork-studio", W - 56 - 22, 424, 15, "end", QUIET, .5)
         + arrow(W - 56 - 11, 424, 11, QUIET, width=1.6)
     )
-    write("iwork.svg", svg(W, H, body, "iWork Studio — give your AI agent the keys to Apple iWork"))
+    defs = (SEBKA.format(c=GOLD) +
+            '<linearGradient id="fadeL" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
+            '<stop offset="1" stop-color="#fff" stop-opacity=".9"/></linearGradient>'
+            '<mask id="lattice"><rect x="700" y="105" width="500" height="283" fill="url(#fadeL)"/></mask>')
+    body = f'<rect x="700" y="105" width="500" height="283" fill="url(#sebka)" mask="url(#lattice)" opacity=".16"/>' + body
+    write("iwork.svg", svg(W, H, body, "iWork Studio — give your AI agent the keys to Apple iWork", defs=defs))
 
 
 # ── Project cards ─────────────────────────────────────────────────────────
 
 def project(fname, idx, name, desc, tags, mark):
-    W, H, P = 600, 330, 6
+    W, H, P = 600, 346, 6
     lines = wrap(SANS_R(), desc, 21, W - 2 * P - 92)
     text = "".join(T(SANS_R(), ln, 50, 184 + i * 31, 21, "start", SOFT) for i, ln in enumerate(lines[:3]))
     chips, x = "", 50
     for tag in tags:
         w = MONO().width(tag, 13, 1) + 28
-        chips += (f'<rect x="{x}" y="262" width="{w:.0f}" height="32" rx="16" fill="{SUNK}" stroke="{RULE}"/>'
-                  + T(MONO(), tag, x + 14, 283, 13, "start", QUIET, 1))
+        chips += (f'<rect x="{x}" y="278" width="{w:.0f}" height="32" rx="16" fill="{SUNK}" stroke="{RULE}"/>'
+                  + T(MONO(), tag, x + 14, 299, 13, "start", QUIET, 1))
         x += w + 8
     body = (f'<circle cx="74" cy="72" r="26" fill="{SUNK}" stroke="{RULE}"/>{mark}'
             + T(MONO(), idx, W - 50 - 22, 79, 13, "end", QUIET, 2)
@@ -268,68 +255,7 @@ def project(fname, idx, name, desc, tags, mark):
     write(fname, svg(W, H, body, f"{name} — {desc}", pad=P))
 
 
-# ── Essays (from the blog's RSS) ──────────────────────────────────────────
-
-def fetch_feed():
-    src = os.environ.get("RSS_FILE")
-    if src:
-        return open(src, encoding="utf-8").read()
-    req = urllib.request.Request(RSS_URL, headers={"User-Agent": "arkanji-profile"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read().decode("utf-8")
-
-
-def essays(n=5):
-    xml = fetch_feed()
-    items = []
-    for it in re.findall(r"<item>(.*?)</item>", xml, re.S):
-        link = re.search(r"<link>(.*?)</link>", it).group(1).strip()
-        if "/posts/" not in link:
-            continue
-        title = html.unescape(re.search(r"<title>(.*?)</title>", it, re.S).group(1)).strip()
-        date = email.utils.parsedate_to_datetime(re.search(r"<pubDate>(.*?)</pubDate>", it).group(1))
-        items.append((date, title, link))
-    items.sort(key=lambda t: t[0], reverse=True)
-    items = items[:n]
-
-    W, H = 1200, 132
-    write("essays/head.svg", svg(W, H, label(56, W - 56, 76, "من الكهف", "02 — LATEST ESSAYS", dot=True)
-                                 + T(MONO(), "AUTO-UPDATED DAILY FROM ARKANJI.COM", 56, 104, 12, "start", QUIET, 2),
-                                 "Latest essays from arkanji.com"))
-    today = dt.datetime.now(dt.timezone.utc)
-    rows = []
-    for i, (date, title, link) in enumerate(items):
-        W, H = 1200, 104
-        when = f"{AR_MONTHS[date.month - 1]} {date.year}"
-        fresh = (today - date).days <= 14
-        avail = W - 56 - 76 - 260 - (88 if fresh else 0)
-        title_fit, size = DISP_M().fit(title, avail, 34, 24)
-        tx = W - 56 - 64
-        badge = ""
-        if fresh:
-            bx = tx - DISP_M().width(title_fit, size) - 24 - 66
-            badge = (f'<rect x="{bx:.0f}" y="36" width="66" height="32" rx="16" fill="{GOLD}" fill-opacity=".14" stroke="{GOLD}" stroke-opacity=".5"/>'
-                     + T(SANS_M(), "جديد", bx + 33, 58, 16, "middle", GOLD))
-        body = (T(DISP_B(), f"{i + 1:02d}".translate(AR_DIGITS), W - 56, 64, 26, "end", QUIET)
-                + T(DISP_M(), title_fit, tx, 65, size, "end", INK)
-                + badge
-                + T(SANS_R(), when, 96, 62, 19, "start", FAINT)
-                + arrow(56, 63, 18, GOLD, "w"))
-        write(f"essays/{i}.svg", svg(W, H, body, f"{title} — {when}", rx=18))
-        rows.append((title, link, i))
-
-    block = ['<!-- ESSAYS:START — rewritten by scripts/build.py, edits here are lost -->',
-             '<a href="https://arkanji.com/posts/"><img src="assets/essays/head.svg" width="100%" alt="Latest essays from arkanji.com"></a>']
-    block += [f'<a href="{link}"><img src="assets/essays/{i}.svg" width="100%" alt="{html.escape(title)}"></a>'
-              for title, link, i in rows]
-    block.append("<!-- ESSAYS:END -->")
-    readme = os.path.join(ROOT, "README.md")
-    text = open(readme, encoding="utf-8").read()
-    text = re.sub(r"<!-- ESSAYS:START.*?<!-- ESSAYS:END -->", lambda _: "\n".join(block), text, flags=re.S)
-    open(readme, "w", encoding="utf-8").write(text)
-
-
-# ── Doctrine ──────────────────────────────────────────────────────────────
+# ── Principles ──────────────────────────────────────────────────────────────
 
 def element(kind, cx, cy, s=22):
     """The four alchemical elements the blog's README uses: 🜂 🜄 🜁 🜃."""
@@ -344,7 +270,7 @@ def element(kind, cx, cy, s=22):
             f'<polygon points="{pts}"/>{bar}</g>')
 
 
-def doctrine():
+def principles():
     W, H = 1200, 470
     cols = [  # right to left, as an Arabic reader meets them
         ("fire", "البناء بصمت", "SILENT BUILDING", "The work happens in the cave, not on the timeline."),
@@ -353,7 +279,7 @@ def doctrine():
         ("earth", "المخرجات تتكلم", "OUTPUT SPEAKS", "Don't announce. Ship. Let the thing itself do the talking."),
     ]
     cw = (W - 112) / 4
-    body = label(56, W - 56, 76, "العقيدة", "03 — THE DOCTRINE")
+    body = label(56, W - 56, 76, "المبادئ", "02 — PRINCIPLES")
     body += f'<rect x="56" y="104" width="{W - 112}" height="1" fill="{RULE}"/>'
     for i, (kind, ar, en, desc) in enumerate(cols):
         cx = W - 56 - cw * (i + .5)
@@ -365,7 +291,7 @@ def doctrine():
         body += "</g>"
         if i:
             body += f'<rect x="{W - 56 - cw * i:.0f}" y="140" width="1" height="276" fill="{RULE}"/>'
-    write("doctrine.svg", svg(W, H, body, "The Doctrine — silent building, simplicity, messy work, output speaks"))
+    write("principles.svg", svg(W, H, body, "Principles — silent building, simplicity, messy work, output speaks"))
 
 
 # ── Tools ─────────────────────────────────────────────────────────────────
@@ -377,7 +303,7 @@ def stack():
              ("posthog", "PostHog"), ("figma", "Figma"), ("apple", "Apple")]
     cw = (W - 112) / len(tools)
     css = ".lit{animation:lit 10s ease-in-out infinite}@keyframes lit{0%,8%,100%{fill:" + SOFT + "}4%{fill:" + GOLD + "}}"
-    body = label(56, W - 56, 76, "العدّة", "04 — TOOLS I THINK WITH")
+    body = label(56, W - 56, 76, "العدّة", "03 — TOOLS I THINK WITH")
     body += f'<rect x="56" y="104" width="{W - 112}" height="1" fill="{RULE}"/>'
     for i, (key, name) in enumerate(tools):
         cx = 56 + cw * (i + .5)
@@ -397,7 +323,7 @@ def footer():
     body = (f'<rect width="{W}" height="{H}" fill="url(#sebka)" opacity=".06"/>'
             + T(DISP_R(), "“إذا حذفتَ الجملة ولم يلاحظ أحد — احذفها.”", W / 2, 140, 44, "middle", INK)
             + T(MONO(), "— THE DELETION TEST", W / 2 - 8, 190, 14, "end", QUIET, 2.5)
-            + T(SANS_M(), "اختبار الحذف", W / 2 + 8, 191, 17, "start", QUIET)
+            + T(SANS_M(), "اختبار  الحذف", W / 2 + 8, 191, 17, "start", QUIET)
             + f'<rect x="{W / 2 - 24}" y="226" width="48" height="1" fill="{RULE}"/>'
             + T(SANS_M(), en, W / 2 - 8, 274, 20, "middle", FAINT, 1)
             + f'<rect class="caret" x="{W / 2 + ew / 2 - 2:.0f}" y="256" width="10" height="22" fill="{GOLD}"/>')
@@ -417,10 +343,9 @@ def main():
             "The cave, Arabic first. Short, sharp essays on product and building. Written in Obsidian, "
             "pushed to GitHub, shipped by Hugo.",
             ["HUGO", "OBSIDIAN", "CLOUDFLARE"], arch(61, 59, 26, GOLD))
-    doctrine()
+    principles()
     stack()
     footer()
-    essays()
 
 
 if __name__ == "__main__":

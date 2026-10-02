@@ -22,18 +22,7 @@
 
 <br><br>
 
-<!-- ESSAYS:START — rewritten by scripts/build.py, edits here are lost -->
-<a href="https://arkanji.com/posts/"><img src="assets/essays/head.svg" width="100%" alt="Latest essays from arkanji.com"></a>
-<a href="https://arkanji.com/posts/iwork-studio-launch/"><img src="assets/essays/0.svg" width="100%" alt="Released: iWork Studio"></a>
-<a href="https://arkanji.com/posts/the-builder-who-does-not-post/"><img src="assets/essays/1.svg" width="100%" alt="اللي ما ينشر ينتهي أول"></a>
-<a href="https://arkanji.com/posts/the-builder-who-follows-everything/"><img src="assets/essays/2.svg" width="100%" alt="اللي يتابع كل شي ما يبني شي"></a>
-<a href="https://arkanji.com/posts/the-builder-who-stops-explaining/"><img src="assets/essays/3.svg" width="100%" alt="اللي يوقف الشرح يبدأ البناء"></a>
-<a href="https://arkanji.com/posts/the-button-nobody-clicks/"><img src="assets/essays/4.svg" width="100%" alt="الزر اللي ما حد يضغطه"></a>
-<!-- ESSAYS:END -->
-
-<br><br>
-
-<img src="assets/doctrine.svg" width="100%" alt="The Doctrine: البناء بصمت, silent building. هوس البساطة, simplicity. الشغل الفوضوي, messy work. المخرجات تتكلم, output speaks.">
+<img src="assets/principles.svg" width="100%" alt="Principles: البناء بصمت, silent building. هوس البساطة, simplicity. الشغل الفوضوي, messy work. المخرجات تتكلم, output speaks.">
 
 <br><br>
 
