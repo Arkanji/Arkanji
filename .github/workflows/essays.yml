@@ -1,0 +1,45 @@
+# Keeps "From the cave" in step with arkanji.com: reads the blog's RSS once a
+# day, redraws the essay rows, and commits only when something changed.
+name: Latest essays
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # 08:17 Riyadh time
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: essays
+  cancel-in-progress: false
+
+jobs:
+  essays:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Redraw
+        run: |
+          pip install -q uharfbuzz fonttools brotli
+          python scripts/build.py
+
+      - name: Commit if changed
+        run: |
+          git add -A assets README.md
+          if git diff --cached --quiet; then
+            echo "No new essays."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "essays: refresh from arkanji.com"
+          git push

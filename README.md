@@ -1,118 +1,52 @@
 <div align="center">
 
-<!-- Header Banner -->
-<img src="header.svg" alt="arkanji — I build in silence, I think out loud" width="100%"/>
+<img src="assets/hero.svg" width="100%" alt="Waleed Arkanji · وليد أركنجي — I build in silence. I think out loud.">
 
-<br/>
+<br><br>
 
-<sub>Product builder. Simplicity obsessed. Working from the cave.</sub>
-
-<br/><br/>
-
-[![X](https://img.shields.io/badge/@WaleedArkanji-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/WaleedArkanji)
+<a href="https://arkanji.com"><img src="assets/links/site.svg" height="42" alt="arkanji.com"></a>
+<a href="https://x.com/WaleedArkanji"><img src="assets/links/x.svg" height="42" alt="X: @WaleedArkanji"></a>
+<a href="https://linkedin.com/in/arkanji"><img src="assets/links/linkedin.svg" height="42" alt="LinkedIn: in/arkanji"></a>
+<a href="https://arkanji.gumroad.com"><img src="assets/links/tools.svg" height="42" alt="Tools on Gumroad"></a>
 
 </div>
 
-<br/>
+<br>
 
-<div align="center">
-<img src="divider.svg" width="400"/>
-</div>
+<a href="https://github.com/Arkanji/iwork-studio"><img src="assets/iwork.svg" width="100%" alt="iWork Studio — give your AI agent the keys to Apple iWork"></a>
+<a href="https://arkanji.com/images/posts/iwork-studio-film-v3.mp4"><img src="assets/iwork-film.webp" width="100%" alt="iWork Studio in action: an AI agent edits a Numbers cell and keeps its formula, updates every Keynote slide without touching the formatting, and writes an Arabic letter in Pages"></a>
 
-<br/>
+<p align="center"><sub>▶ <a href="https://arkanji.com/images/posts/iwork-studio-film-v3.mp4"><b>Watch the film with sound</b></a> &nbsp;·&nbsp; <a href="https://arkanji.com/posts/iwork-studio-launch/">Read the launch story</a> &nbsp;·&nbsp; <a href="https://github.com/Arkanji/iwork-studio">Star the repo</a></sub></p>
 
-### 🦇 &nbsp;The Cave
+<a href="https://github.com/Arkanji/metabase-mcp-server"><img src="assets/card-metabase.svg" width="50%" alt="metabase-mcp-server — read-only MCP server for Metabase"></a><a href="https://arkanji.com"><img src="assets/card-cave.svg" width="50%" alt="arkanji.com — the cave, Arabic-first essays on product and building"></a>
 
-The cave is where things get built, no announcements, no build-in-public theater. Just focus, craft, and shipping when it's ready.
+<br><br>
 
-I'm a product builder in the MENA tech ecosystem building at Resal. I think in systems, obsess over simplicity, and believe the best products feel inevitable. Everything unnecessary is a small tax on the user's attention.
+<!-- ESSAYS:START — rewritten by scripts/build.py, edits here are lost -->
+<a href="https://arkanji.com/posts/"><img src="assets/essays/head.svg" width="100%" alt="Latest essays from arkanji.com"></a>
+<a href="https://arkanji.com/posts/iwork-studio-launch/"><img src="assets/essays/0.svg" width="100%" alt="Released: iWork Studio"></a>
+<a href="https://arkanji.com/posts/the-builder-who-does-not-post/"><img src="assets/essays/1.svg" width="100%" alt="اللي ما ينشر ينتهي أول"></a>
+<a href="https://arkanji.com/posts/the-builder-who-follows-everything/"><img src="assets/essays/2.svg" width="100%" alt="اللي يتابع كل شي ما يبني شي"></a>
+<a href="https://arkanji.com/posts/the-builder-who-stops-explaining/"><img src="assets/essays/3.svg" width="100%" alt="اللي يوقف الشرح يبدأ البناء"></a>
+<a href="https://arkanji.com/posts/the-button-nobody-clicks/"><img src="assets/essays/4.svg" width="100%" alt="الزر اللي ما حد يضغطه"></a>
+<!-- ESSAYS:END -->
 
-```
-The best products don't need explanation, they feel like they always existed.
-```
+<br><br>
 
-<br/>
+<img src="assets/doctrine.svg" width="100%" alt="The Doctrine: البناء بصمت, silent building. هوس البساطة, simplicity. الشغل الفوضوي, messy work. المخرجات تتكلم, output speaks.">
 
-<div align="center">
-<img src="divider.svg" width="400"/>
-</div>
+<br><br>
 
-<br/>
+<img src="assets/stack.svg" width="100%" alt="Tools I think with: Claude, Python, TypeScript, Hugo, Cloudflare, Obsidian, Metabase, PostHog, Figma, Apple">
 
-### ⚒️ &nbsp;What I Build With
+<br><br>
 
-<div align="center">
-
-![TypeScript](https://img.shields.io/badge/TypeScript-0a0a0a?style=flat-square&logo=typescript&logoColor=c8b88a)
-![Node.js](https://img.shields.io/badge/Node.js-0a0a0a?style=flat-square&logo=nodedotjs&logoColor=c8b88a)
-![React](https://img.shields.io/badge/React-0a0a0a?style=flat-square&logo=react&logoColor=c8b88a)
-![Next.js](https://img.shields.io/badge/Next.js-0a0a0a?style=flat-square&logo=nextdotjs&logoColor=c8b88a)
-![Python](https://img.shields.io/badge/Python-0a0a0a?style=flat-square&logo=python&logoColor=c8b88a)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-0a0a0a?style=flat-square&logo=postgresql&logoColor=c8b88a)
-![Cloudflare](https://img.shields.io/badge/Cloudflare-0a0a0a?style=flat-square&logo=cloudflare&logoColor=c8b88a)
-![Vercel](https://img.shields.io/badge/Vercel-0a0a0a?style=flat-square&logo=vercel&logoColor=c8b88a)
-
-</div>
-
-<br/>
-
-<div align="center">
-<img src="divider.svg" width="400"/>
-</div>
-
-<br/>
-
-### 📡 &nbsp;From the Cave — Recent Work
-
-<table>
-<tr>
-<td width="100%" valign="top">
-
-**[metabase-mcp-server](https://github.com/Arkanji/metabase-mcp-server)**
-Read-only MCP server for Metabase — 14 tools for querying databases via the Model Context Protocol.
-`TypeScript` `MCP` `Metabase`
-
-</td>
-</tr>
-</table>
-
-<br/>
-
-<div align="center">
-<img src="divider.svg" width="400"/>
-</div>
-
-<br/>
-
-### 🧱 &nbsp;Building Philosophy
+<img src="assets/footer.svg" width="100%" alt="“If you delete the sentence and nobody notices, delete it.” — The Deletion Test. Outputs speak.">
 
 <div align="center">
 
-| | |
-|:---:|:---:|
-| **البناء بصمت** | **هوس البساطة** |
-| Build in silence. Ship when it's ready | Subtract until only the essential remains |
-| **الشغل الفوضوي** | **المخرجات تتكلم** |
-| Real building is messy, not a framework | Don't announce what you'll build. Build it |
+<br>
 
-</div>
-
-<br/>
-
-<div align="center">
-<img src="divider.svg" width="400"/>
-</div>
-
-<br/>
-
-<div align="center">
-
-<br/>
-
-<sub>Outputs speak.</sub>
-
-<br/><br/>
-
-<img src="https://komarev.com/ghpvc/?username=Arkanji&style=flat-square&color=c8b88a&label=cave+visitors" alt="Profile views"/>
+<img src="https://komarev.com/ghpvc/?username=Arkanji&style=flat-square&color=c8b88a&label=cave+visitors" alt="Profile views">
 
 </div>
