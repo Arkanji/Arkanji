@@ -20,21 +20,19 @@
 
 <a href="https://github.com/Arkanji/metabase-mcp-server"><img src="assets/card-metabase.svg" width="50%" alt="metabase-mcp-server — read-only MCP server for Metabase"></a><a href="https://arkanji.com"><img src="assets/card-cave.svg" width="50%" alt="arkanji.com — the cave, Arabic-first essays on product and building"></a>
 
-<br><br>
+<br>
 
 <img src="assets/principles.svg" width="100%" alt="Principles: البناء بصمت, silent building. هوس البساطة, simplicity. الشغل الفوضوي, messy work. المخرجات تتكلم, output speaks.">
 
-<br><br>
+<br>
 
 <img src="assets/stack.svg" width="100%" alt="Tools I think with: Claude, Python, TypeScript, Hugo, Cloudflare, Obsidian, Metabase, PostHog, Figma, Apple">
 
-<br><br>
+<br>
 
 <img src="assets/footer.svg" width="100%" alt="“If you delete the sentence and nobody notices, delete it.” — The Deletion Test. Outputs speak.">
 
 <div align="center">
-
-<br>
 
 <img src="https://komarev.com/ghpvc/?username=Arkanji&style=flat-square&color=c8b88a&label=cave+visitors" alt="Profile views">
 
