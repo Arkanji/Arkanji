@@ -2,7 +2,7 @@
 
 <img src="assets/hero.svg" width="100%" alt="Waleed Arkanji · وليد أركنجي — I build in silence. I think out loud.">
 
-<br><br>
+<br>
 
 <a href="https://arkanji.com"><img src="assets/links/site.svg" height="42" alt="arkanji.com"></a>
 <a href="https://x.com/WaleedArkanji"><img src="assets/links/x.svg" height="42" alt="X: @WaleedArkanji"></a>
